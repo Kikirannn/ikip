@@ -93,9 +93,36 @@
                 </a>
             </nav>
 
-            <!-- Footer -->
-            <div class="px-6 py-4 border-t border-teal-100/50">
-                <p class="text-xs text-slate-500 text-center">© 2025 IKIP Siliwangi</p>
+
+            <!-- Footer with User Info & Logout -->
+            <div class="px-4 py-4 border-t border-teal-100/50 space-y-3">
+                <div class="px-2">
+                    <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Pengguna</p>
+                    <div class="flex items-center gap-3 mb-3">
+                        <div
+                            class="w-10 h-10 bg-gradient-to-br from-teal-400 to-emerald-500 rounded-lg flex items-center justify-center">
+                            <span class="text-white font-bold text-sm">{{ substr(Auth::user()->name, 0, 1) }}</span>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-sm font-semibold text-slate-800 truncate">{{ Auth::user()->name }}</p>
+                            <p class="text-xs text-slate-500 truncate">{{ Auth::user()->email }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <button type="submit"
+                        class="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold text-red-600 hover:bg-red-50 border border-red-200 hover:border-red-300 transition-all duration-200">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                        </svg>
+                        Keluar
+                    </button>
+                </form>
+
+                <p class="text-xs text-slate-500 text-center pt-2">© 2025 IKIP Siliwangi</p>
             </div>
         </div>
     </div>
